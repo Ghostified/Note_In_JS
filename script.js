@@ -22,6 +22,17 @@ createButton.addEventListener("click", ()=>{
 notesContainer.addEventListener("click",function(e){
     if (e.target.tagName == "IMG"){
         e.target.parentElement.remove();
+
+        //update storage after deleting notes
+        updateStorage();
+    }
+    else if (e.target.tagName == "p"){
+        notes = document.querySelectorAll(".input-box");
+        notes.forEach(nt => {
+            notes.onkeyup = function(){
+                updateStorage();
+            }
+        })
     }
 })
 
